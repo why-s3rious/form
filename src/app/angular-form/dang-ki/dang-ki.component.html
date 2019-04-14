@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5 mx-auto">
+      <form #formAddUser="ngForm" (ngSubmit)="themNguoiDung(formAddUser)" >
+        <h4 class="display-4">Đăng Ký</h4>
+        <div class="form-group">
+          <label for="">Tài Khoản</label>
+          <input required minlength="8" maxlength="16" #taiKhoan="ngModel" type="text" name="TaiKhoan" ngModel class="form-control">
+          <div *ngIf='taiKhoan.errors && (taiKhoan.touched || taiKhoan.dirty || formAddUser.submitted)'>
+            <p *ngIf="taiKhoan.errors.required" class="alert alert-danger">vui long nhap tai khoan</p>
+            <p *ngIf="taiKhoan.errors.minlength" class="alert alert-danger">tai khoan phai co tu 8 ki tu tro len</p>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Mật Khẩu</label>
+          <input type="text" required #matKhau="ngModel" name="MatKhau" ngModel class="form-control">
+          <div *ngIf="matKhau.errors && (matKhau.touched || matKhau.dirty)">
+            <p *ngIf="matKhau.errors.required" class="alert alert-primary">ban chua nhap</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Họ Tên: </label>
+          <input type="text"  pattern="[a-zA-Z ]+" #hoTen=ngModel name="Hoten" ngModel class="form-control" >
+          <div *ngIf="hoTen.errors && (hoTen.touched || hoTen.dirty)">
+            <p *ngIf="hoTen.errors.pattern" class="alert alert-primary">ho ten nhap vao phai la chu</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input type="email"  name="email" ngModel  class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="">Số ĐT</label>
+          <input type="text" pattern="^016[0-9]+" #sdt="ngModel" name="SDT" ngModel  class="form-control">
+          <div *ngIf="sdt.errors && (sdt.touched || sdt.dirty)">
+            <p *ngIf="sdt.errors.pattern" class="alert alert-primary">ho ten nhap 3 so dau la 016</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Loại Người Dùng: </label>
+          <input type="radio" ngModel name="loanguoidung" value="HV">Học Viên
+          <input type="radio" ngModel name="loanguoidung" value="GV">Giáo Vụ
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success"  type="submit" >Đăng Ký</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
